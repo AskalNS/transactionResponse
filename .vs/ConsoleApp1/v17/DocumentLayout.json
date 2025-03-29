@@ -1,0 +1,241 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\transactiondtoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\transactiondtoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\kafkaconsumertransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\kafkaconsumertransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\refilldtoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\refilldtoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\investmentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\investmentresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\investmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\investmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\kafkaconsumerrefill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\kafkaconsumerrefill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\kafkaconsumerinvestment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\kafkaconsumerinvestment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\investing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\investing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\pc\\desktop\\transactionresult\\consoleapp1\\consoleapp1\\models\\refill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826E79D8-F412-4309-A15B-893F34BCA34B}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\models\\refill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\Repository\\TransactionRepository.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Repository\\TransactionRepository.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\Repository\\TransactionRepository.cs",
+              "RelativeToolTip": "ConsoleApp1\\Repository\\TransactionRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T10:02:08.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "ConsoleApp1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T13:55:50.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InvestmentResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\InvestmentResponseDTO.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\InvestmentResponseDTO.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\InvestmentResponseDTO.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\InvestmentResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T13:57:08.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InvestmentDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\InvestmentDTO.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\InvestmentDTO.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\InvestmentDTO.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\InvestmentDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:49:10.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "KafkaConsumerTransaction.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerTransaction.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\KafkaConsumerTransaction.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerTransaction.cs",
+              "RelativeToolTip": "ConsoleApp1\\KafkaConsumerTransaction.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAYwEsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:14:57.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransactionDTOResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\TransactionDTOResponse.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\TransactionDTOResponse.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\TransactionDTOResponse.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\TransactionDTOResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T10:17:14.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RefillDTOResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\RefillDTOResponse.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\RefillDTOResponse.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\RefillDTOResponse.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\RefillDTOResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T10:17:10.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Transaction.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Transaction.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\Transaction.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwCEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:24:05.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KafkaConsumerRefill.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerRefill.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\KafkaConsumerRefill.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerRefill.cs",
+              "RelativeToolTip": "ConsoleApp1\\KafkaConsumerRefill.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAvwEkAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:14:13.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "KafkaConsumerInvestment.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerInvestment.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\KafkaConsumerInvestment.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\KafkaConsumerInvestment.cs",
+              "RelativeToolTip": "ConsoleApp1\\KafkaConsumerInvestment.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:14:11.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ConsoleApp1.csproj",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+              "RelativeDocumentMoniker": "ConsoleApp1\\ConsoleApp1.csproj",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+              "RelativeToolTip": "ConsoleApp1\\ConsoleApp1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-24T16:12:13.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Investing.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Investing.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\Investing.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Investing.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\Investing.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T13:57:19.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Refill.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Refill.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\models\\Refill.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TransactionResult\\ConsoleApp1\\ConsoleApp1\\models\\Refill.cs",
+              "RelativeToolTip": "ConsoleApp1\\models\\Refill.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvx0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:15:38.87Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
