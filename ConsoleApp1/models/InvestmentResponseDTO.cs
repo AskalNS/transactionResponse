@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace Transactions.models
 {
-    class InvestmentResponseDTO
+    public class InvestmentResponseDTO
     {
-        public string id;
         public int InvestorId { get; set; }
-        public string InvestorFio { get; set; }
-        public string InvestorIin { get; set; }
-        public int BusinessId { get; set; }
-        public string BusinessFio { get; set; }
-        public string BusinessBin { get; set; }
+        public int OrderId { get; set; }
         public decimal Amount { get; set; }
-
+        public DateTimeOffset CreatedAt { get; set; }
         public int result;
     }
 }

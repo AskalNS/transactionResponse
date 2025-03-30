@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
+using ConsoleApp1.Repository;
 using Newtonsoft.Json;
 using Transactions.models;
 
@@ -12,6 +13,7 @@ namespace Transactions
     {
         private readonly string _topic;
         private readonly ConsumerConfig _config;
+        private static TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
 
         public KafkaConsumerInvestment(string topic, string groupId, string bootstrapServers)
         {
@@ -29,6 +31,7 @@ namespace Transactions
         {
             await Task.Yield();
             using var consumer = new ConsumerBuilder<Ignore, string>(_config).Build();
+            Console.WriteLine("333333333333333333333333333");
             consumer.Subscribe(_topic);
 
             try
@@ -73,10 +76,9 @@ namespace Transactions
             }
             else if(investmentDTO.result == 1)
             {
-
+                repo.InsertInvestment(investmentDTO);
+                repo.UpdateOrderCurrentAmount(investmentDTO.OrderId, Convert.ToInt32(investmentDTO.Amount));
             }
-            
-            
         }
     }
 }

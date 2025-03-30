@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using ConsoleApp1.Repository;
 using Newtonsoft.Json;
 using Transactions.models;
 using WebApplication6.Models;
@@ -9,6 +10,7 @@ namespace Transactions
     {
         private readonly string _topic;
         private readonly ConsumerConfig _config;
+        private static TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
 
         public KafkaConsumerRefill(string topic, string groupId, string bootstrapServers)
         {
@@ -27,6 +29,7 @@ namespace Transactions
             await Task.Yield();
 
             using var consumer = new ConsumerBuilder<Ignore, string>(_config).Build();
+            Console.WriteLine("22222222222222222222222222222");
             consumer.Subscribe(_topic);
 
             try
@@ -71,8 +74,30 @@ namespace Transactions
             }
             else if(refillDTO.Result == 1)
             {
-               
+                repo.InsertRefill(refillDTO);
 
+                List<Investing> investments = repo.GetInvestmentsByOrderId(refillDTO.OrderId);
+
+                decimal totalInvestSum = 0;
+                foreach (var investing in investments)
+                {
+                    totalInvestSum += investing.Amount;
+                }
+
+                foreach (var investing in investments)
+                {
+                    var transaction = new TransactionDTOResponse()
+                    {
+                        InvestorId = investing.InvestorId,
+                        OrderId = refillDTO.OrderId,
+                        Amount = refillDTO.Amount / totalInvestSum * investing.Amount,
+                        TrasactionType = 1010,
+                        CreatedAt = DateTimeOffset.Now,
+                        Result = 1
+                    };
+                    repo.InsertTransaction(transaction);
+
+                }
             }
         }
     }

@@ -38,7 +38,7 @@ namespace ConsoleApp1.Repository
             });
         }
 
-        public void InsertRefill(RefillDTO refillDTO)
+        public void InsertRefill(RefillDTOResponse refillDTO)
         {
             using var db = CreateConnection();
             string sql = @"INSERT INTO dbo.""Refill"" (""businessId"", ""createdAt"", ""orderId"", ""amount"") 
@@ -49,24 +49,50 @@ namespace ConsoleApp1.Repository
                 refillDTO.BusinessId,
                 CreatedAt = refillDTO.CreatedAt.UtcDateTime,
                 refillDTO.OrderId,
-                refillDTO.amount
+                refillDTO.Amount
             });
         }
 
-        public void InsertInvestment(InvestmentDTO investmentDTO)
+        public void InsertInvestment(InvestmentResponseDTO investmentDTO)
         {
             using var db = CreateConnection();
-            string sql = @"INSERT INTO dbo.""Investing"" (""investorId"", ""businessId"", ""amount"", ""createdAt"") 
-                   VALUES (@investorId, @businessId, @amount, @createdAt);";
+            string sql = @"INSERT INTO dbo.""Investing"" (""investorId"", ""orderId"", ""amount"", ""createdAt"") 
+                   VALUES (@investorId, @orderId, @amount, @createdAt);";
 
-            db.Execute(sql, new
+            try
             {
-                investmentDTO.InvestorId,
-                investmentDTO.BusinessId,
-                investmentDTO.amount,
-                CreatedAt = DateTimeOffset.UtcNow
-            });
+                db.Execute(sql, new
+                {
+                    investmentDTO.InvestorId,
+                    investmentDTO.OrderId,
+                    investmentDTO.Amount,
+                    CreatedAt = DateTimeOffset.UtcNow
+                });
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+        public List<Investing> GetInvestmentsByOrderId(int orderId)
+        {
+            using var db = CreateConnection();
+            string sql = @"SELECT ""id"", ""investorId"", ""orderId"", ""amount"", ""createdAt"" 
+                   FROM dbo.""Investing"" 
+                   WHERE ""orderId"" = @orderId;";
+
+            return db.Query<Investing>(sql, new { orderId }).ToList();
         }
 
+        public void UpdateOrderCurrentAmount(int orderId, int amountToAdd)
+        {
+            using var db = CreateConnection();
+
+            string sql = @"UPDATE dbo.""Order"" 
+                   SET ""currentAmount"" = ""currentAmount"" + @amountToAdd 
+                   WHERE ""id"" = @orderId;";
+
+            db.Execute(sql, new { orderId, amountToAdd });
+        }
     }
 }

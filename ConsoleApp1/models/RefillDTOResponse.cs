@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Transactions.models
 {
-    class RefillDTOResponse
+    public class RefillDTOResponse
     {
         public int BusinessId { get; set; }
         public int OrderId { get; set; }

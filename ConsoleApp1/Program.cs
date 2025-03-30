@@ -7,7 +7,7 @@ using WebApplication6.Models;
 Console.WriteLine("Hello, World!");
 
 
-var repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
+//var repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
 
 //repo.InsertTransaction(new TransactionDTO
 //{
@@ -19,16 +19,19 @@ var repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinv
 //});
 
 
-//var cts = new CancellationTokenSource();
-//Console.CancelKeyPress += (_, e) => {
-//    e.Cancel = true;
-//    cts.Cancel();
-//};
+var cts = new CancellationTokenSource();
+Console.CancelKeyPress += (_, e) =>
+{
+    e.Cancel = true;
+    cts.Cancel();
+};
 
-//var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "localhost:9092");
-//var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "localhost:9092");
-//var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "localhost:9092");
+var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "localhost:9092");
+var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "localhost:9092");
+var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "localhost:9092");
 
-//await Task.WhenAll(
-//    consumer3.StartConsuming(cts.Token)
-//);
+await Task.WhenAll(
+    consumer1.StartConsuming(cts.Token),
+    consumer2.StartConsuming(cts.Token),
+    consumer3.StartConsuming(cts.Token)
+);

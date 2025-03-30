@@ -56,3 +56,4 @@ C:\Users\Pc\Desktop\TransactionResult\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\M
 C:\Users\Pc\Desktop\TransactionResult\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\Pc\Desktop\TransactionResult\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\Pc\Desktop\TransactionResult\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Pc\Desktop\TransactionResult\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json

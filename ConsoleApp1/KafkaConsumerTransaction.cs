@@ -29,6 +29,7 @@ namespace Transactions
             await Task.Yield();
 
             using var consumer = new ConsumerBuilder<Ignore, string>(_config).Build();
+            Console.WriteLine("1111111111111111111111111111");
             consumer.Subscribe(_topic);
 
             try
