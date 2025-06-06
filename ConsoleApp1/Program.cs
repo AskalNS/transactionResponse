@@ -26,12 +26,23 @@ Console.CancelKeyPress += (_, e) =>
     cts.Cancel();
 };
 
-var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "localhost:9092");
-var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "localhost:9092");
-var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "localhost:9092");
+var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "192.168.49.2:30094");
+var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "192.168.49.2:30094");
+var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "192.168.49.2:30094");
 
-await Task.WhenAll(
-    consumer1.StartConsuming(cts.Token),
-    consumer2.StartConsuming(cts.Token),
-    consumer3.StartConsuming(cts.Token)
-);
+var thread1 = new Thread(() => consumer1.StartConsuming(cts.Token)) { IsBackground = true };
+var thread2 = new Thread(() => consumer2.StartConsuming(cts.Token)) { IsBackground = true };
+var thread3 = new Thread(() => consumer3.StartConsuming(cts.Token)) { IsBackground = true };
+
+thread1.Start();
+thread2.Start();
+thread3.Start();
+
+// Ждем завершения работы
+await Task.Run(() => {
+    thread1.Join();
+    thread2.Join();
+    thread3.Join();
+});
+
+Console.ReadLine();

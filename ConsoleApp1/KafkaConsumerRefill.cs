@@ -62,7 +62,7 @@ namespace Transactions
         }
 
         private static async Task ProcessMessageAsync(string message)
-        {
+       {
             await Task.Delay(500);
             Console.WriteLine($"Processed message: {message}");
 
