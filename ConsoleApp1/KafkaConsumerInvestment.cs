@@ -8,12 +8,11 @@ using Transactions.models;
 
 namespace Transactions
 {
-
     public class KafkaConsumerInvestment
     {
         private readonly string _topic;
         private readonly ConsumerConfig _config;
-        private static TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
+        private static readonly TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
 
         public KafkaConsumerInvestment(string topic, string groupId, string bootstrapServers)
         {
@@ -31,7 +30,7 @@ namespace Transactions
         {
             await Task.Yield();
             using var consumer = new ConsumerBuilder<Ignore, string>(_config).Build();
-            Console.WriteLine("333333333333333333333333333");
+            Console.WriteLine($"[KafkaConsumer] Подписка на топик: {_topic}");
             consumer.Subscribe(_topic);
 
             try
@@ -41,7 +40,7 @@ namespace Transactions
                     try
                     {
                         var consumeResult = consumer.Consume(cancellationToken);
-                        Console.WriteLine($"Received message: {consumeResult.Message.Value} at {consumeResult.TopicPartitionOffset}");
+                        Console.WriteLine($"[KafkaConsumer] Получено сообщение: {consumeResult.Message.Value} | Offset: {consumeResult.TopicPartitionOffset}");
 
                         await ProcessMessageAsync(consumeResult.Message.Value);
 
@@ -49,35 +48,66 @@ namespace Transactions
                     }
                     catch (OperationCanceledException)
                     {
+                        Console.WriteLine("[KafkaConsumer] Остановка по токену.");
                         break;
                     }
                     catch (ConsumeException e)
                     {
-                        Console.WriteLine($"Kafka consume error: {e.Error.Reason}");
+                        Console.WriteLine($"[KafkaConsumer] Ошибка получения из Kafka: {e.Error.Reason}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"[KafkaConsumer] Общая ошибка: {e.Message}");
                     }
                 }
             }
             finally
             {
+                Console.WriteLine("[KafkaConsumer] Завершение и закрытие подписки.");
                 consumer.Close();
             }
         }
 
         private static async Task ProcessMessageAsync(string message)
         {
-            await Task.Delay(500);
-            Console.WriteLine($"Processed message: {message}");
-
-            InvestmentResponseDTO investmentDTO = JsonConvert.DeserializeObject<InvestmentResponseDTO>(message);
-
-            if(investmentDTO.result == 0)
+            try
             {
-                return;
+                await Task.Delay(500);
+                Console.WriteLine($"[Process] Начата обработка сообщения: {message}");
+
+                InvestmentResponseDTO investmentDTO = JsonConvert.DeserializeObject<InvestmentResponseDTO>(message);
+
+                Console.WriteLine($"[Process] Десериализован DTO: InvestorId={investmentDTO.InvestorId}, OrderId={investmentDTO.OrderId}, Amount={investmentDTO.Amount}, Result={investmentDTO.result}");
+
+                if (investmentDTO.result == 0)
+                {
+                    Console.WriteLine($"[Process] Оплата неуспешна. Пропуск сохранения.");
+                    return;
+                }
+
+                if (investmentDTO.result == 1)
+                {
+                    Console.WriteLine($"[Process] Оплата успешна. Сохраняем инвестицию...");
+
+                    repo.InsertInvestment(investmentDTO);
+                    Console.WriteLine($"[Process] Инвестиция добавлена в БД.");
+
+                    int amount = Convert.ToInt32(investmentDTO.Amount);
+                    repo.UpdateOrderCurrentAmount(investmentDTO.OrderId, amount);
+                    Console.WriteLine($"[Process] Обновлён текущий объём инвестиций по заказу OrderId={investmentDTO.OrderId} на сумму {amount}");
+                }
+                else
+                {
+                    Console.WriteLine($"[Process] Неизвестный статус result={investmentDTO.result}. Ничего не делаем.");
+                }
             }
-            else if(investmentDTO.result == 1)
+            catch (JsonException je)
             {
-                repo.InsertInvestment(investmentDTO);
-                repo.UpdateOrderCurrentAmount(investmentDTO.OrderId, Convert.ToInt32(investmentDTO.Amount));
+                Console.WriteLine($"[Process] Ошибка при разборе JSON: {je.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Process] Ошибка обработки сообщения: {ex}");
             }
         }
     }

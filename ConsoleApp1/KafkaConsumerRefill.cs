@@ -10,7 +10,7 @@ namespace Transactions
     {
         private readonly string _topic;
         private readonly ConsumerConfig _config;
-        private static TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
+        private static readonly TransactionRepository repo = new TransactionRepository("Host=localhost;Port=5432;Database=crawdinvest;Username=postgres;Password=1234;");
 
         public KafkaConsumerRefill(string topic, string groupId, string bootstrapServers)
         {
@@ -29,7 +29,7 @@ namespace Transactions
             await Task.Yield();
 
             using var consumer = new ConsumerBuilder<Ignore, string>(_config).Build();
-            Console.WriteLine("22222222222222222222222222222");
+            Console.WriteLine($"[KafkaConsumerRefill] Подписка на топик: {_topic}");
             consumer.Subscribe(_topic);
 
             try
@@ -39,7 +39,7 @@ namespace Transactions
                     try
                     {
                         var consumeResult = consumer.Consume(cancellationToken);
-                        Console.WriteLine($"Received message: {consumeResult.Message.Value} at {consumeResult.TopicPartitionOffset}");
+                        Console.WriteLine($"[KafkaConsumerRefill] Получено сообщение: {consumeResult.Message.Value} | Offset: {consumeResult.TopicPartitionOffset}");
 
                         await ProcessMessageAsync(consumeResult.Message.Value);
 
@@ -47,57 +47,91 @@ namespace Transactions
                     }
                     catch (OperationCanceledException)
                     {
+                        Console.WriteLine("[KafkaConsumerRefill] Остановка по токену.");
                         break;
                     }
                     catch (ConsumeException e)
                     {
-                        Console.WriteLine($"Kafka consume error: {e.Error.Reason}");
+                        Console.WriteLine($"[KafkaConsumerRefill] Ошибка Kafka: {e.Error.Reason}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"[KafkaConsumerRefill] Ошибка обработки: {e}");
                     }
                 }
             }
             finally
             {
+                Console.WriteLine("[KafkaConsumerRefill] Завершение работы и отписка.");
                 consumer.Close();
             }
         }
 
         private static async Task ProcessMessageAsync(string message)
-       {
-            await Task.Delay(500);
-            Console.WriteLine($"Processed message: {message}");
-
-            RefillDTOResponse refillDTO = JsonConvert.DeserializeObject<RefillDTOResponse>(message);
-
-            if(refillDTO.Result == 0)
+        {
+            try
             {
-                return;
-            }
-            else if(refillDTO.Result == 1)
-            {
-                repo.InsertRefill(refillDTO);
+                await Task.Delay(500);
+                Console.WriteLine($"[Process] Начата обработка сообщения: {message}");
 
-                List<Investing> investments = repo.GetInvestmentsByOrderId(refillDTO.OrderId);
+                var refillDTO = JsonConvert.DeserializeObject<RefillDTOResponse>(message);
 
-                decimal totalInvestSum = 0;
-                foreach (var investing in investments)
+                Console.WriteLine($"[Process] Десериализован DTO: OrderId={refillDTO.OrderId}, Amount={refillDTO.Amount}, Result={refillDTO.Result}");
+
+                if (refillDTO.Result == 0)
                 {
-                    totalInvestSum += investing.Amount;
+                    Console.WriteLine("[Process] Пополнение отклонено (Result = 0). Пропуск.");
+                    return;
                 }
 
-                foreach (var investing in investments)
+                if (refillDTO.Result == 1)
                 {
-                    var transaction = new TransactionDTOResponse()
+                    Console.WriteLine("[Process] Пополнение подтверждено. Сохраняем пополнение в БД.");
+                    repo.InsertRefill(refillDTO);
+
+                    List<Investing> investments = repo.GetInvestmentsByOrderId(refillDTO.OrderId);
+                    Console.WriteLine($"[Process] Найдено инвестиций по заказу: {investments.Count}");
+
+                    decimal totalInvestSum = 0;
+                    foreach (var investing in investments)
+                        totalInvestSum += investing.Amount;
+
+                    if (totalInvestSum == 0)
                     {
-                        InvestorId = investing.InvestorId,
-                        OrderId = refillDTO.OrderId,
-                        Amount = refillDTO.Amount / totalInvestSum * investing.Amount,
-                        TrasactionType = 1010,
-                        CreatedAt = DateTimeOffset.Now,
-                        Result = 1
-                    };
-                    repo.InsertTransaction(transaction);
+                        Console.WriteLine("[Process] Сумма инвестиций = 0. Деление невозможно. Пропуск.");
+                        return;
+                    }
 
+                    foreach (var investing in investments)
+                    {
+                        var proportionalAmount = refillDTO.Amount / totalInvestSum * investing.Amount;
+
+                        var transaction = new TransactionDTOResponse
+                        {
+                            InvestorId = investing.InvestorId,
+                            OrderId = refillDTO.OrderId,
+                            Amount = proportionalAmount,
+                            TrasactionType = 1010,
+                            CreatedAt = DateTimeOffset.Now,
+                            Result = 1
+                        };
+
+                        repo.InsertTransaction(transaction);
+                        Console.WriteLine($"[Process] Добавлена транзакция для инвестора {investing.InvestorId}: сумма = {proportionalAmount}");
+                    }
                 }
+                else
+                {
+                    Console.WriteLine($"[Process] Неизвестный статус Result = {refillDTO.Result}. Пропуск.");
+                }
+            }
+            catch (JsonException je)
+            {
+                Console.WriteLine($"[Process] Ошибка JSON-десериализации: {je.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Process] Ошибка обработки сообщения: {ex}");
             }
         }
     }

@@ -26,9 +26,9 @@ Console.CancelKeyPress += (_, e) =>
     cts.Cancel();
 };
 
-var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "192.168.49.2:30094");
-var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "192.168.49.2:30094");
-var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "192.168.49.2:30094");
+var consumer1 = new KafkaConsumerInvestment("InvestorPaymentResponse", "consumer-group-1", "localhost:9092");
+var consumer2 = new KafkaConsumerRefill("BusinessRefillResponse", "consumer-group-1", "localhost:9092");
+var consumer3 = new KafkaConsumerTransaction("InvestorTransactionResponse", "consumer-group-1", "localhost:9092");
 
 var thread1 = new Thread(() => consumer1.StartConsuming(cts.Token)) { IsBackground = true };
 var thread2 = new Thread(() => consumer2.StartConsuming(cts.Token)) { IsBackground = true };
